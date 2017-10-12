@@ -628,6 +628,15 @@ describe('Repository', function() {
       });
 
       it('should read all releases', function(done) {
+         const paginationOptions = {
+            per_page: 30
+         };
+
+         remoteRepo.listReleases(paginationOptions, assertSuccessful(done, function(err, releases) {
+            expect(releases).to.be.an.array();
+            done();
+         }));
+
          remoteRepo.listReleases(assertSuccessful(done, function(err, releases) {
             expect(releases).to.be.an.array();
             done();

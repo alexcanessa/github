@@ -459,6 +459,11 @@ describe('Repository', function() {
       });
 
       it('should list tags on repo', function(done) {
+         const options = {
+            per_page: 30
+         };
+
+         remoteRepo.listTags(options, assertSuccessful(done));
          remoteRepo.listTags(assertSuccessful(done));
       });
 
